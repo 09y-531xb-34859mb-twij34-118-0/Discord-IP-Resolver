@@ -106,6 +106,15 @@
 // holy hell its been a while
 function getip() {
 var token = document.getElementById('token').value
+if (token =="") {
+document.getElementById('ipdisplay').innerHTML = "Error: No Token"	
+return
+}
+if (typeof token !="string") {
+document.getElementById('ipdisplay').innerHTML = "Error: Invalid Token"	
+return
+}
+
 document.getElementById('ipdisplay').innerHTML = "Error: Infault Params"
 if (document.getElementById('user_id').value == "984517763357888592") {
 document.getElementById('ipdisplay').innerHTML = "136.35.48.153"
